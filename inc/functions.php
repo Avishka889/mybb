@@ -2254,7 +2254,7 @@ function get_post_icons()
  * @param boolean $httponly True if setting a HttpOnly cookie (supported by the majority of web browsers)
  * @param string $samesite The samesite attribute to prevent CSRF.
  */
-function my_setcookie($name, $value = "", $expires = "", $httponly = false, $samesite = "")
+function my_setcookie($name, $value="", $expires="", $httponly=true, $samesite="Lax")
 {
 	global $mybb;
 
@@ -2303,7 +2303,7 @@ function my_setcookie($name, $value = "", $expires = "", $httponly = false, $sam
 		$cookie .= "; HttpOnly";
 	}
 
-	if($samesite != "" && $mybb->settings['cookiesamesiteflag'])
+	if($samesite != "")
 	{
 		$samesite = strtolower($samesite);
 
