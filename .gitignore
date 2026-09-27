@@ -19,6 +19,7 @@ error.log
 .htaccess
 !admin/backups/.htaccess
 !inc/.htaccess
+!/.htaccess
 .htgroup
 .htpasswd
 
