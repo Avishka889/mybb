@@ -87,4 +87,19 @@ Options -MultiViews +FollowSymlinks -Indexes
 <IfModule mod_headers.c>
 	Header always set X-Frame-Options "SAMEORIGIN"
 	Header always set X-Content-Type-Options "nosniff"
+
+	Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none';"
+ 
+	# Remove Server version info leak
+	Header always unset Server
+	Header always unset X-Powered-By
+	Header unset Server
+	Header unset X-Powered-By
+ 
+# Referrer Policy
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+<IfModule mod_php.c>
+	php_flag expose_php Off
 </IfModule>
